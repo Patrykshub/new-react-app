@@ -1,11 +1,22 @@
 import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
 import Card from '../UI/Card';
+import ExpensesFilter from '../ExpenseFilter';
+
+  
 
 const Expenses = (props) => {
+  const saveExpenseFilterYear = (enteredYear) => {
+    const expenseData = {
+        ...enteredYear,
+        id: Math.random().toString()
+    };
+   props.onAddExpense(expenseData);
+};
     return(
-
+      <div>
       <Card className='expenses'>
+      <ExpensesFilter />
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
@@ -27,6 +38,7 @@ const Expenses = (props) => {
         date={props.items[3].date}
       />
       </Card>
+      </div>
 
     );
 }
